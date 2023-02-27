@@ -23,18 +23,24 @@ class UserController {
         }
     }
 
-    async login(req: any, res: any, next: any) {
+    async login(req: Request, res: Response, next: NextFunction) {
         try {
-            res.send('test route')
+            const { email, password } = req.body;
+            const userData = await UserService.login(email, password);
+            res.cookie('refreshToken', userData.refreshToken, { maxAge: 10 * 24 * 60 * 60 * 1000, httpOnly: true });
+            return res.json(userData);
         } catch(e) {
-            console.log(e)
+            next(e)
         }
     }
-    async logout(req: any, res: any, next: any) {
+    async logout(req: Request, res: Response, next: NextFunction) {
         try {
-            res.send('test route')
+            const { refreshToken } = req.cookies;
+            await UserService.logout(refreshToken);
+            res.clearCookie('refreshToken');
+            return res.sendStatus(200);
         } catch(e) {
-            console.log(e)
+            next(e)
         }
     }
     async activate(req: Request, res: Response, next: NextFunction) {
@@ -48,18 +54,24 @@ class UserController {
             next(e);
         }
     }
-    async refresh(req: any, res: any, next: any) {
+    async refresh(req: Request, res: Response, next: NextFunction) {
         try {
-            res.send('test route')
+            const { refreshToken } = req.cookies;
+            const userData = await UserService.refresh(refreshToken);
+
+            // TODO: use https
+            res.cookie('refreshToken', userData.refreshToken, { maxAge: 10 * 24 * 60 * 60 * 1000, httpOnly: true })
+            return res.json(userData);
         } catch(e) {
-            console.log(e)
+            next(e)
         }
     }
-    async getUsers(req: any, res: any, next: any) {
+    async getUsers(req: Request, res: Response, next: NextFunction) {
         try {
-            res.json(['Server is alive!'])
+            const users = await userService.getUsers();
+            res.json(users);
         } catch(e) {
-            console.log(e)
+            next(e)
         }
     }
 }

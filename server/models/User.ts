@@ -6,7 +6,7 @@ class User {
     public email: string;
 
     @prop({ required: true })
-    private password: string;
+    public password: string;
 
     @prop({ default: false })
     public isActivated: boolean;

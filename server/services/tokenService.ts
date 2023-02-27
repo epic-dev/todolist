@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import TokenModel from '../models/Token'
 
 class TokenService {
@@ -24,6 +24,32 @@ class TokenService {
 
         const token = await TokenModel.create({ user: userId, refreshToken });
         return token;
+    }
+    async removeToken(refreshToken: string) {
+        await TokenModel.deleteOne({ refreshToken });
+    }
+    async refreshToken(refreshToken: string) {
+        
+    }
+    async findToken(refreshToken: string) {
+        const tokenModel = await TokenModel.findOne({ refreshToken });
+        return tokenModel;
+    }
+    validateAccessToken(token: string) {
+        try {
+            const userData = jwt.verify(token, process.env.JWT_ACCESS_SECRET!);
+            return userData;
+        } catch(e) {
+            return null;
+        }
+    }
+    validateRefreshToken(token: string): JwtPayload | null {
+        try {
+            const userData = jwt.verify(token, process.env.JWT_REFRESH_SECRET!);
+            return userData as JwtPayload;
+        } catch(e) {
+            return null;
+        }
     }
 }
 export default new TokenService();
