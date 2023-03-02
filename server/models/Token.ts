@@ -1,7 +1,7 @@
-import { getModelForClass, prop } from "@typegoose/typegoose";
-import { ObjectId } from "mongoose";
+import { getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
+import { ObjectId } from "mongodb";
 import UserModel from "./User";
-
+@modelOptions({ schemaOptions: { collection: 'tokens', timestamps: true } })
 class Token {
     @prop({ required: true })
     public refreshToken: string;

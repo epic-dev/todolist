@@ -18,4 +18,7 @@ export class ApiError extends Error {
     static UnhandledException(message: string) {
         return new ApiError(500, message);
     }
+    static NotFound(message: string) {
+        return new ApiError(404, message);
+    }
 }
