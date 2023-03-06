@@ -1,8 +1,8 @@
 import { Middleware, configureStore } from "@reduxjs/toolkit";
-import { AuthReducer } from '../modules/Authentication'
-import { ToDoReducer } from "../modules/ToDoList";
+import { rootReducer } from "./reducers";
 
 let loggingMiddleware: Middleware = () => () => () => {};
+
 if(process.env.NODE_ENV === 'development') {
     loggingMiddleware = ({ getState }) => (next) => (action) => {
         console.group('[LOGGER]');
@@ -14,17 +14,16 @@ if(process.env.NODE_ENV === 'development') {
 }
 
 const store = configureStore({
-    // combine reducers
-    reducer: {
-        todos: ToDoReducer,
-        auth: AuthReducer,
-    },
+    reducer: rootReducer,
     middleware: (_default) =>
         _default()
         .concat(loggingMiddleware),
 
 });
-
+/**
+ * it's enough for me to look at the store directly in chrome dev tools :)
+ * no need to install react dev tools
+ * */
 //@ts-ignore
 window.store = store;
 

@@ -1,10 +1,10 @@
 import { AxiosResponse } from "axios";
 import $api from "../../../shared/http";
-import { ToDoListResponse } from "../../../models/ToDoListResponse";
+import { IToDo } from "../interfaces/IToDo";
 
 export default class ToDoListService {
-    static async getTodos(): Promise<AxiosResponse<ToDoListResponse>> {
+    static async getTodos(): Promise<AxiosResponse<IToDo[]>> {
         // TODO: get todo's via graphql
-        return $api.get<ToDoListResponse[]>('/getTodos');
+        return $api.get<IToDo[]>('/getTodos');
     }
 }

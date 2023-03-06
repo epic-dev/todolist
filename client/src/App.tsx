@@ -1,28 +1,26 @@
-import React, { useEffect } from 'react';
-// import logo from './logo.svg';
-import './App.css';
-import { LoginFormView } from './modules/Authentication';
-import { ToDoListView } from './modules/ToDoList';
+import React, { useEffect, useState } from 'react';
+import './fonts/Roboto-Regular.ttf';
+import './fonts/Roboto-Medium.ttf';
+import { useAppSelector } from './redux/hooks';
+import { EnvironmentLabel, Layout, SessionProvider } from './shared/components';
+import { authHooks } from './modules/Authentication';
+import { Outlet } from 'react-router-dom';
 
 function App() {
-  useEffect(() => {
-    // check authentication
-  }, []);
+  const [isProd] = useState<boolean>(process.env.NODE_ENV === 'production');
+  const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated);
+
+  authHooks.useCheckAuth();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <LoginFormView />
-      <ToDoListView />
-    </div>
+    <React.StrictMode>
+      <EnvironmentLabel display={!isProd} env={process.env.NODE_ENV} />
+      <SessionProvider>
+        <Layout>
+          <Outlet />
+        </Layout>
+      </SessionProvider>
+    </React.StrictMode>
   );
 }
 

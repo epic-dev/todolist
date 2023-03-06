@@ -1,21 +1,21 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { addNewToDo, fetchAll } from "../thunks";
-import { IToDo } from "../interfaces/IToDo";
-import { useSelector } from "react-redux";
 
 interface IToDoList { }
 
 const ToDoList: FC<IToDoList> = () => {
     const [label, setLabel] = useState('');
-    const [entries, setEntries] = useState<IToDo[]>([]);
     const dispatch = useAppDispatch()
+    const entries = useAppSelector(state => state.todos.entries) ?? []
 
     const fetch = () => {
         dispatch(fetchAll());
     }
     const add = () => {
-        dispatch(addNewToDo(label))
+        dispatch(addNewToDo(label));
+        setLabel('');
+        dispatch(fetchAll());
     }
     
     return (<>
@@ -25,7 +25,7 @@ const ToDoList: FC<IToDoList> = () => {
         <button onClick={add}>add todos</button>
         <ul>
         {
-            entries.map(e => <li key={e.label}>{e.label}</li>)
+            entries.map(e => <li key={e.id}>{e.label}</li>)
         }
         </ul>
     </>);
