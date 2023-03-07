@@ -9,7 +9,7 @@ jobs:
       - name: cd client
         run: cd client
       - name: install client
-        run: npm ci
+        run: npm ci -- ./client
       - name: test client
         run: npm run test
       - name: cd server
