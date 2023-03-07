@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { LoginFormView } from "..";
 import { FlexContainer } from "../../../shared/components";
+import { SignUpForm } from "./SignUpForm";
+import { useLocation } from "react-router-dom";
 
 interface IAuthPage {}
 export const AuthPage: FC<IAuthPage> = () => {
@@ -8,16 +10,27 @@ export const AuthPage: FC<IAuthPage> = () => {
         justifyContent: 'center',
         height: '100%'
     };
+
+    const { pathname } = useLocation();
+
     return (<FlexContainer style={styles}>
-        <div style={{
+        <FlexContainer style={{
             flex: 1,
-            height: '100%',
             backgroundImage: 'url(./login_bg.jpg)',
             backgroundPosition: 'center',
             backgroundSize: 'cover',
-        }}></div>
-        <FlexContainer style={{ flex: 1, alignContent: 'center', justifyContent: 'center' }}>
-            <LoginFormView />
+        }}></FlexContainer>
+        <FlexContainer style={{ flex: 1 }} $direction="column">
+            {
+                pathname === '/login'
+                ? <LoginFormView />
+                : null
+            }
+            {
+                pathname === '/sign-up'
+                ? <SignUpForm />
+                : null
+            }
         </FlexContainer>
     </FlexContainer>);
 };

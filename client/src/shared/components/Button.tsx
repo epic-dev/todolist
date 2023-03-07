@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface IBaseButtonStyles {
     readonly $disabled?: boolean;
+    readonly $width?: string | number | { min: number, max: number };
 }
 
 const ButtonBase = styled.button<IBaseButtonStyles>`
@@ -20,8 +21,9 @@ const ButtonBase = styled.button<IBaseButtonStyles>`
     padding: 0 1em;
     align-items: center;
     justify-content: center;
-    min-width: 89px;
-    max-width: 120px;
+    max-width: ${props => typeof props.$width === 'object' ? props.$width?.max + 'px' : null};
+    min-width: ${props => typeof props.$width === 'object' ? props.$width?.min + 'px' : null};
+    width: ${props => typeof props.$width === 'number' ? props.$width + 'px' : props.$width};
     border-radius: 10px;
     cursor: ${props => props.$disabled ? 'disabled' : 'pointer'};
 `;

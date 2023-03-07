@@ -13,6 +13,7 @@ const StyledTextInput = styled.input`
     font-size: 20px;
     line-height: 23px;
     outline: none;
+    width: 100%;
 `;
 
 // interface ITextInput extends HTMLInputElement {

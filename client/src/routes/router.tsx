@@ -15,6 +15,10 @@ export const router = createBrowserRouter([
                 element: <AuthPage />
             },
             {
+                path: '/sign-up',
+                element: <AuthPage />
+            },
+            {
                 path: '/todos',
                 element: <ToDoListView />
             },
