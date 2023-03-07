@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './fonts/Roboto-Regular.ttf';
 import './fonts/Roboto-Medium.ttf';
 import { useAppSelector } from './redux/hooks';
