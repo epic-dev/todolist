@@ -6,7 +6,15 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-      - name: install
+      - name: cd client
+        run: cd client
+      - name: install client
         run: npm ci
-      - name: test
+      - name: test client
+        run: npm run test
+      - name: cd server
+        run: cd ../server
+      - name: install server
+        run: npm ci
+      - name: test server
         run: npm run test
