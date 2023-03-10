@@ -6,6 +6,7 @@ interface IFlexContainerStyles {
     readonly $alignSelf?: "center" | "start" | "end";
     readonly $justifyContent?: "center" | "start" | "end";
     readonly $padding?: string; // TODO: create appropriate type
+    readonly $margin?: string; // TODO: create appropriate type
 }
 
 export const FlexContainer = styled.div<IFlexContainerStyles>`
@@ -15,4 +16,5 @@ export const FlexContainer = styled.div<IFlexContainerStyles>`
     align-self: ${props => props.$alignSelf};
     justify-content: ${props => props.$justifyContent};
     padding: ${props => props.$padding};
+    margin: ${props => props.$margin};
 `;

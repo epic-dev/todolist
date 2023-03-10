@@ -19,30 +19,33 @@ export const SignUpForm: FC = () => {
 
     return (<>
     <FlexContainer $direction="column" $alignSelf="center" $justifyContent="center" style={{flex: 1}}>
-        <FlexContainer $padding='0 0 18px' $alignSelf="center" $width={290}>
+        <FlexContainer $margin='0 0 30px' $alignSelf="center" $width={290}>
             <TextInput
-                placeholder="Email"
+                label="Email"
                 value={email}
                 onChange={setEmailHandler}
+                required
             />
         </FlexContainer>
-        <FlexContainer $padding='0 0 18px' $alignSelf="center" $width={290}>
+        <FlexContainer $margin='0 0 30px' $alignSelf="center" $width={290}>
             <TextInput
-                placeholder="Password"
+                label="Password"
                 type="password"
                 value={password}
                 onChange={setPasswordHandler}
+                required
             />
         </FlexContainer>
-        <FlexContainer $padding='0 0 18px' $alignSelf="center" $width={290}>
+        <FlexContainer $margin='0 0 30px' $alignSelf="center" $width={290}>
             <TextInput
-                placeholder="Confirm password"
+                label="Confirm password"
                 type="password"
                 value={confirmPassword}
                 onChange={setConfirmPasswordHandler}
+                required
             />
         </FlexContainer>
-        <PrimaryButton style={{width: '100%'}}>Sign Up</PrimaryButton>
+        <PrimaryButton onClick={() => {}}>Sign Up</PrimaryButton>
     </FlexContainer>
     <FlexContainer $alignSelf='center' $padding='0 0 18px'>
         <Text>Have an account already? <Link to='/login' style={{ color: 'white', fontWeight: 'bold'}}>Log in</Link></Text>

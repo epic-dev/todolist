@@ -30,19 +30,21 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 
     return (<>
         <FlexContainer $direction="column" $alignSelf="center" $justifyContent="center" style={{flex: 1}}>
-            <FlexContainer $padding='0 0 18px' $alignSelf="center" $width={290}>
+            <FlexContainer $margin='0 0 30px' $alignSelf="center" $width={290}>
                 <TextInput 
-                    placeholder='Email'
                     value={email}
                     onChange={handleChangeEmail}
+                    required
+                    label="Email"
                 />
             </FlexContainer>
-            <FlexContainer $padding='0 0 18px'>
+            <FlexContainer $margin='0 0 30px' $alignSelf="center" $width={290}>
                 <TextInput
                     type='password'
-                    placeholder='Password'
                     value={password}
                     onChange={handleChangePassword}
+                    required
+                    label="Password"
                 />
             </FlexContainer>
             <PrimaryButton onClick={onSignIn}>Sign In</PrimaryButton>
