@@ -19,10 +19,12 @@ export const login = (email: string, password: string) =>
              * the better way is to store the token in httpOnly cookies
              */
             localStorage.setItem('token', data.accessToken);
+            return true;
         } catch(e) {
             // FIXME
             const { response } = e as AxiosError<{message: string, errors: string[]}>; //axios error
             dispatch(setAuthError([response?.data.message ?? '']));
+            return false;
         }
     }
 export const logout = () => (dispatch: Dispatch) => {

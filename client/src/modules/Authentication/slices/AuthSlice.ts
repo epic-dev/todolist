@@ -19,7 +19,7 @@ const initialState: IAuthState = {
     token: null,
     errors: null,
 }
-// @ts-ignore
+
 export const AuthSlice = createSlice({
     name: 'AuthSlice',
     initialState,
@@ -35,8 +35,10 @@ export const AuthSlice = createSlice({
             state.isAuthenticated = true;
         },
         setAuthError: (state, action: PayloadAction<string[]>) => {
-            state = initialState;
-            state.errors = action.payload;
+            state = {
+                ...initialState,
+                errors: action.payload,
+            };
         },
         reset: (state) => {
             state = initialState;

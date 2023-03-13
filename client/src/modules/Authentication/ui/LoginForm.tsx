@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { login, registration } from '../thunks';
-import { FlexContainer, PrimaryButton, SecondaryButton, TextInput, Text } from '../../../shared/components';
+import { FlexContainer, TextInput, Text } from '../../../shared/components';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { AuthActionButton } from './AuthActionButton';
 
 interface LoginFormProps {}
 
@@ -23,9 +24,11 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
         setPassword(e.target.value)
     }
     
-    const onSignIn = () => {
-        // dispatch(login(email, password));
-        // navigate('/todos');
+    const onSignIn = async () => {
+        const result = await dispatch(login(email, password));
+        if(result)  {
+            navigate('/todos');
+        }
     }
 
     return (<>
@@ -47,7 +50,7 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
                     label="Password"
                 />
             </FlexContainer>
-            <PrimaryButton onClick={onSignIn}>Sign In</PrimaryButton>
+            <AuthActionButton onClick={onSignIn} label='Sign In' />
         </FlexContainer>
         <FlexContainer $alignSelf='center' $padding='0 0 18px'>
             <Text>Don't have an account yet? <Link to='/sign-up' style={{ color: 'white', fontWeight: 'bold'}}>Sign up</Link></Text>
