@@ -1,7 +1,20 @@
-# Getting Started with Create React App
+# A client side for the React ToDo app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### **[Demo]()**
 
+### Things to be done
+
+1. Main ToDo list screen
+   1. ToDo item styles on check
+   2. ToDO item actions: delete/edit/check
+2. Drawer with
+   1. categories filter
+   2. search field
+   3. possibility to add new list/category
+3. TBD
+
+---
 ## Available Scripts
 
 In the project directory, you can run:
@@ -9,7 +22,7 @@ In the project directory, you can run:
 ### `yarn start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
