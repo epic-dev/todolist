@@ -7,6 +7,7 @@
   "scripts": {
     "build": "rm -rf ./build && NODE_ENV=development webpack",
     "build:prod": "rm -rf ./build && NODE_ENV=production webpack",
+    "run:prod": "npm run build:prod && npm run start",
     "start": "nodemon build/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q build/index.js\""
   },
