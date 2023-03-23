@@ -17,7 +17,7 @@ class UserService {
 
         const hashPwd = await bcrypt.hash(password, 2);
         const activationLink = v4();
-        const user = await UserModel.create({ email, password: hashPwd, activationLink });
+        const user = (await UserModel.create({ email, password: hashPwd, activationLink })).toObject();
 
         await MailService.sendActivationEmail(email, `${process.env.API_URL}/activate/${activationLink}`); // FIXME activationLink is not link
 
@@ -78,7 +78,7 @@ class UserService {
         const user = await UserModel.findById(userData.id);
         // DRY
         if(!user) {
-            // shoouldn't be the case but typescript error
+            // shouldn't be the case but typescript error
             throw ApiError.UnhandledException('Cannot find user' + userData.id);
         }
         const userDto = new UserDto(user);

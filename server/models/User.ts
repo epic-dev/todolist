@@ -1,17 +1,17 @@
-import { getModelForClass, modelOptions, prop } from '@typegoose/typegoose';
+import { ModelOptions, getModelForClass, Prop } from '@typegoose/typegoose';
 
-@modelOptions({ schemaOptions: { collection: 'users', timestamps: true } })
+@ModelOptions({ schemaOptions: { collection: 'users', timestamps: true } })
 class User {
-    @prop({ required: true, unique: true })
+    @Prop({ required: true, unique: true })
     public email: string;
 
-    @prop({ required: true })
+    @Prop({ required: true })
     public password: string;
 
-    @prop({ default: false })
+    @Prop({ default: false })
     public isActivated: boolean;
 
-    @prop()
+    @Prop()
     public activationLink: string;
 }
 

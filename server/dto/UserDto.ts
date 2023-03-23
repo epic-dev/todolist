@@ -5,7 +5,7 @@ export default class UserDto {
     email: string;
     id: string;
     isActivated: boolean;
-    constructor(model: Document<typeof UserModel>) {
+    constructor(model: any) { // FIXME
         this.email = model.get('email');
         this.id = model.get('_id');
         this.isActivated = model.get('isActivated');

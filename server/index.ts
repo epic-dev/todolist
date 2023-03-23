@@ -24,10 +24,13 @@ app.use(errorMiddleware);
 
 const start = async () => {
     try {
-        await mongoose.connect(MONGODB_URL, {}, (err) => {
-            if(err) console.log(err);
-            console.log('MongoDB started...')
-        })
+        await mongoose.connect(MONGODB_URL, {})
+            .then(() => {
+                console.log('MongoDB started...')
+            })
+            .catch((err) => {
+                console.log(err);
+            });
         app.listen(PORT, () => {
             console.log(`Server started on ${PORT}`)
         });

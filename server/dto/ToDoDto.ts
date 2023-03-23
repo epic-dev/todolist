@@ -5,7 +5,7 @@ export class ToDoDTO {
     id: string;
     label: string;
     checked: boolean;
-    constructor(model: Document<typeof ToDoModel>) {
+    constructor(model: any) { //FIXME
         this.id = model.get('_id');
         this.label = model.get('label');
         this.checked = model.get('checked');
