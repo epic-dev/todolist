@@ -1,11 +1,15 @@
 import { FC, useState } from "react";
 import { FlexContainer, PrimaryButton, Text, TextInput } from "../../../shared/components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { registration } from "../thunks";
+import { useAppDispatch } from "../../../redux/hooks";
 
 export const SignUpForm: FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     
     const setEmailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
@@ -15,6 +19,14 @@ export const SignUpForm: FC = () => {
     }
     const setConfirmPasswordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setConfirmPassword(e.target.value);
+    }
+
+    const onSignUp = async () => {
+        // TODO: password confirmation
+        const result = await dispatch(registration(email, password));
+        if(result) {
+            navigate('/todos');
+        }
     }
 
     return (<>
@@ -45,7 +57,7 @@ export const SignUpForm: FC = () => {
                 required
             />
         </FlexContainer>
-        <PrimaryButton onClick={() => {}}>Sign Up</PrimaryButton>
+        <PrimaryButton onClick={onSignUp}>Sign Up</PrimaryButton>
     </FlexContainer>
     <FlexContainer $alignSelf='center' $padding='0 0 18px'>
         <Text>Have an account already? <Link to='/login' style={{ color: 'white', fontWeight: 'bold'}}>Log in</Link></Text>

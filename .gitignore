@@ -30,3 +30,6 @@ yarn-error.log*
 .vscode
 server/.vscode
 server/amplify
+db/
+run-local.sh
+server/app/node_modules

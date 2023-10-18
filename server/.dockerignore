@@ -1,0 +1,5 @@
+.git
+.vscode
+build
+amplify
+node_modules

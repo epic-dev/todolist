@@ -38,9 +38,11 @@ export const registration = (email: string, password: string) =>
             dispatch(setSuccessAuth(data));
             // see comment above
             localStorage.setItem('token', data.accessToken);
+            return true;
         } catch(e) {
             // FIXME DRY
             const { response } = e as AxiosError<{message: string, errors: string[]}>; //axios error
             dispatch(setAuthError([response?.data.message ?? '']));
+            return false;
         }
     }

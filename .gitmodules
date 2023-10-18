@@ -1,0 +1,3 @@
+[submodule "server/todolist-api"]
+	path = server/todolist-api
+	url = https://github.com/epic-dev/todolist-api.git
