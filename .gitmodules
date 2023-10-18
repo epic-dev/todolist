@@ -1,3 +1,9 @@
 [submodule "server/todolist-api"]
 	path = server/todolist-api
 	url = https://github.com/epic-dev/todolist-api.git
+[submodule "todolist-ui-react"]
+	path = todolist-ui-react
+	url = https://github.com/epic-dev/todolist-ui-react.git
+[submodule "client/todolist-ui-react"]
+	path = client/todolist-ui-react
+	url = https://github.com/epic-dev/todolist-ui-react.git
