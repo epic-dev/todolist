@@ -10,6 +10,6 @@ RUN bun install --production
 COPY . ./
 
 ENV NODE_ENV production
-CMD ["bun", "app/src/index.ts"]
+CMD ["bun", "todolist/src/index.ts"]
 
 EXPOSE 3001
