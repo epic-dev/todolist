@@ -32,4 +32,5 @@ server/.vscode
 server/amplify
 db/
 run-local.sh
+stop-local.sh
 server/app/node_modules

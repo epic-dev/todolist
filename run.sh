@@ -6,7 +6,7 @@ set +x;
 IMAGE_NAME="todolist-backend-api"
 APP_CONTAINER_NAME="${IMAGE_NAME}-container"
 MONGO_IMAGE_NAME="mongo"
-MONGO_CONTAINER_NAME="${MONGO_IMAGE_NAME}-container"
+MONGO_CONTAINER_NAME="${MONGO_IMAGE_NAME}-todlist-api-container"
 DOCKER_NETWORK_NAME=todolist-network
 
 # user and password from args
