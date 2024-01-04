@@ -1,7 +1,8 @@
 repo_name: epic-dev/todolist
 report_id: 6f92f34be1469b54cea88f0a8e5a335b
+version: 0.1
 repo_type: Public
-timestamp: '2023-11-09T13:45:11+00:00'
+timestamp: '2024-01-04T14:54:10+00:00'
 requested_by: pyuruts
 provider: github
 branch: main
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+  detection_source_url: https://github.com/epic-dev/todolist/blob/main/client/Dockerfile
   detection_source: client/Dockerfile
   last_updated_by: Pavel Yuruts
   last_updated_on: 2023-10-18 22:21:39.000000000 Z
@@ -28,6 +30,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Virtual Machine Platforms & Containers
   image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/epic-dev/todolist
   detection_source: Repo Metadata
 - name: Git
   description: Fast, scalable, distributed revision control system
@@ -37,6 +40,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/epic-dev/todolist
   detection_source: Repo Metadata
 - name: GitHub Actions
   description: Automate your workflow from idea to production
@@ -46,6 +50,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/epic-dev/todolist/blob/main/.github/workflows/main.yml
   detection_source: ".github/workflows/main.yml"
   last_updated_by: Pavel Yuruts
   last_updated_on: 2023-03-07 15:33:39.000000000 Z
@@ -58,4 +63,5 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/epic-dev/todolist
   detection_source: Repo Metadata
